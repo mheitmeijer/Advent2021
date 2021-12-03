@@ -10,52 +10,132 @@ namespace Advent03
     {
         public void DoIt()
         {
-            Calculate1();
-            //Calculate2();
+            Calculate2();
+            Console.ReadLine();
         }
 
-        private void Calculate2()
-        {
-            }
-
-        private void Calculate1()
+        public void Calculate2()
         {
             var input = GetInput();
-            var horizontal = 0;
-            var depth = 0;
-            foreach(var move in input)
+            var currentComparison = 2048;// Convert.ToInt32("10000", 2);
+                                         //var currentComparison = 16;
+
+            while (input.Count > 1)
             {
-                switch(move.Item1)
+                var oneList = new List<int>();
+                var zeroList = new List<int>();
+                var currentIndex = 0;
+                while (currentIndex < input.Count)
                 {
-                    case "forward":
-                        horizontal += move.Item2;
-                        break;
-                    case "down":
-                        depth += move.Item2;
-                        break;
-                    case "up":
-                        depth -= move.Item2;
-                        break;
+                    var item = input[currentIndex];
+                    if ((item & currentComparison) == 0)
+                    {
+                        zeroList.Add(item);
+                    }
+                    else
+                    {
+                        oneList.Add(item);
+                    }
+                    currentIndex++;
                 }
+                if (oneList.Count >= zeroList.Count)
+                {
+                    input = new List<int>(oneList);
+                }
+                else
+                {
+                    input = new List<int>(zeroList);
+                }
+                currentComparison >>= 1;
             }
-            Console.WriteLine($"Horizontal: {horizontal}");
-            Console.WriteLine($"Depth: {depth}");
-            Console.Write($"Result: {horizontal * depth}");
+            var gamma = input[0];
+            Console.WriteLine($"Gamma: {gamma} ");
+
+            input = GetInput();
+            currentComparison = 2048;
+            while (input.Count > 1)
+            {
+                var oneList = new List<int>();
+                var zeroList = new List<int>();
+                var currentIndex = 0;
+                while (currentIndex < input.Count)
+                {
+                    var item = input[currentIndex];
+                    if ((item & currentComparison) == 0)
+                    {
+                        zeroList.Add(item);
+                    }
+                    else
+                    {
+                        oneList.Add(item);
+                    }
+                    currentIndex++;
+                }
+                if (zeroList.Count <= oneList.Count)
+                {
+                    input = new List<int>(zeroList);
+                }
+                else
+                {
+                    input = new List<int>(oneList);
+                }
+                currentComparison >>= 1;
+            }
+
+            var epsilon = input[0];
+            Console.WriteLine($"Epsilon: {epsilon} ");
+            Console.WriteLine($"Result: {gamma * epsilon}");
         }
 
-        private List<(string, int)> GetInput()
+        public void Calculate1()
         {
-            var result = new List<(string, int)>();
-            StreamReader file = new StreamReader(@".\Input.txt");
+            var input = GetInput();
+            var gamma = "";
+            var epsilon = "";
+            var currentComparison = 2048;// Convert.ToInt32("10000", 2);
+
+            while (currentComparison > 0)
+            {
+                var countZero = 0;
+                var countOne = 0;
+                foreach (var item in input)
+                {
+                    if ((item & currentComparison) == 0)
+                    {
+                        countZero++;
+                    }
+                    else
+                    {
+                        countOne++;
+                    }
+                }
+                if (countOne > countZero)
+                {
+                    gamma += "1";
+                    epsilon += "0";
+                }
+                else
+                {
+                    gamma += "0";
+                    epsilon += "1";
+                }
+                currentComparison >>= 1;
+            }
+            Console.WriteLine($"Gamma: {gamma} = {Convert.ToInt32(gamma, 2)}");
+            Console.WriteLine($"Epsilon: {epsilon} = {Convert.ToInt32(epsilon, 2)}");
+            Console.WriteLine($"Result: {Convert.ToInt32(gamma, 2) * Convert.ToInt32(epsilon, 2)}");
+        }
+
+        private static List<int> GetInput()
+        {
+            var result = new List<int>();
+            StreamReader file = new StreamReader(@"Input.txt");
             string line;
             while ((line = file.ReadLine()) != null)
             {
-                var splitted = line.Split(' ');
-                var direction = splitted[0];
-                var steps = splitted[1];
-                result.Add((direction, Convert.ToInt32(steps)));
-            }
 
+                result.Add(Convert.ToInt32(line, 2));
+            }
             return result;
         }
     }
