@@ -5,7 +5,7 @@ namespace Day005
 {
     public class Day : IDay
     {
-        public double CalculatePart1()
+        public long CalculatePart1()
         {
             var input = GetInput();
             var dimension = 1000;
@@ -114,7 +114,7 @@ namespace Day005
             }
         }
 
-        public double CalculatePart2()
+        public long CalculatePart2()
         {
             return 0;
         }

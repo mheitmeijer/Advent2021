@@ -16,5 +16,9 @@ namespace Framework.Extensions
         {
             return Convert.ToByte(input);
         }
+        public static long ToLong(this string input)
+        {
+            return Convert.ToInt64(input);
+        }
     }
 }

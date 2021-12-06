@@ -8,7 +8,7 @@ namespace Framework.Interfaces
 {
     public interface IDay
     {
-        double CalculatePart1();
-        double CalculatePart2();
+        long CalculatePart1();
+        long CalculatePart2();
     }
 }

@@ -6,13 +6,13 @@ namespace DayXXX
 {
     public class Day : IDay
     {
-        public double CalculatePart1()
+        public long CalculatePart1()
         {
             var result = 0;
             return result;
         }
 
-        public double CalculatePart2()
+        public long CalculatePart2()
         {
             var result = 0;
             return result;

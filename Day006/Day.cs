@@ -7,7 +7,7 @@ namespace Day006
 {
     public class Day : IDay
     {
-        public double CalculatePart1()
+        public long CalculatePart1()
         {
             var result = 0;
             var fishes = GetInput();
@@ -38,12 +38,12 @@ namespace Day006
             return result;
         }
 
-        public double CalculatePart2()
+        public long CalculatePart2()
         {
-            double result = 0;
+            long result = 0;
             var fishes = GetInput();
 
-            var pools = new Dictionary<int, double>() {
+            var pools = new Dictionary<int, long>() {
                 {0, 0},
                 {1, 0},
                 {2, 0},
