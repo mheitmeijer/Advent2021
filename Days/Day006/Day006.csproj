@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Framework\Framework.csproj" />
+    <ProjectReference Include="..\..\Framework\Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DayInput.txt">
+    <None Update="Day006Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
