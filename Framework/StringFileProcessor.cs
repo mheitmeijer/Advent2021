@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Framework
 {
-    internal class StringFileProcessor : FileProcessor<string>
+    public class StringFileProcessor : FileProcessor<string>
     {
         public override List<string> GetContent(string path)
         {
