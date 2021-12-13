@@ -1,5 +1,4 @@
 ﻿using Framework;
-using Framework.Extensions;
 using Framework.Interfaces;
 
 namespace Day008

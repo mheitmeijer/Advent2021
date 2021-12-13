@@ -1,7 +1,6 @@
 ﻿using Framework;
 using Framework.Extensions;
 using Framework.Interfaces;
-using System.Collections;
 
 namespace Day006
 {
